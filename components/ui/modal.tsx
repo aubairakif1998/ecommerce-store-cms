@@ -16,7 +16,7 @@ interface ModelProps {
   children: React.ReactNode;
 }
 
-export const Model: React.FC<ModelProps> = ({
+export const Modal: React.FC<ModelProps> = ({
   title,
   description,
   isOpen,

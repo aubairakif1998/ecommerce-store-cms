@@ -1,6 +1,6 @@
 "use client";
 import { useStoreModel } from "@/hooks/use-store-model";
-import { Model } from "@/components/ui/model";
+import { Modal } from "@/components/ui/modal";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -45,7 +45,7 @@ export const StoreModel = () => {
     }
   };
   return (
-    <Model
+    <Modal
       title="Create Store "
       description="Add a new Store to manage products and categories"
       isOpen={storeModel.isOpen}
@@ -87,6 +87,6 @@ export const StoreModel = () => {
           </form>
         </Form>
       </div>
-    </Model>
+    </Modal>
   );
 };

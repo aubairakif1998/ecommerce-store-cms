@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Model } from "@/components/ui/model";
+import { Model } from "@/components/ui/modal";
 import { useStoreModel } from "@/hooks/use-store-model";
 import { useEffect } from "react";
 const SetupPage = () => {

@@ -1,5 +1,5 @@
 "use client";
-import { StoreModel } from "@/components/models/store-model";
+import { StoreModel } from "@/components/modals/store-modal";
 import { useEffect, useState } from "react";
 export const ModelProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
