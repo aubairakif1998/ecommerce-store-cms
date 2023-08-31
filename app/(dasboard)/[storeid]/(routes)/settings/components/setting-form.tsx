@@ -22,6 +22,7 @@ import { useParams, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { AlertModal } from "@/components/modals/alert_modal";
 import { ApiAlert } from "@/components/ui/api-alert";
+import { useOrigin } from "@/hooks/use-origin";
 
 interface SettingsFormProps {
   initialData: Store;
@@ -35,6 +36,7 @@ type SettingsFormValues = z.infer<typeof formSchema>;
 export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
+  const origin_ = useOrigin();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -126,7 +128,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       <ApiAlert
         title="NEXT_PUBLIC_API_URL"
         variant="public"
-        description={`Des-text`}
+        description={`${origin_}/api/${params.storeid}`}
       />
     </>
   );

@@ -8,7 +8,6 @@ export default async function ({ children }: { children: React.ReactNode }) {
   if (!userId) {
     redirect("/sign-in");
   }
-
   const store = await prismadb.store.findFirst({
     where: {
       userId,

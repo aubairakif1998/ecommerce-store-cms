@@ -18,11 +18,11 @@ export function MainNav({
     //   label: "Overview",
     //   active: pathname === `/${params.storeid}`,
     // },
-    // {
-    //   href: `/${params.storeid}/billboards`,
-    //   label: "Billboards",
-    //   active: pathname === `/${params.storeid}/billboards`,
-    // },
+    {
+      href: `/${params.storeid}/billboards`,
+      label: "Billboards",
+      active: pathname === `/${params.storeid}/billboards`,
+    },
     // {
     //   href: `/${params.storeid}/categories`,
     //   label: "Categories",
