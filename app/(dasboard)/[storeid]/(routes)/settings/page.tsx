@@ -5,7 +5,7 @@ import { SettingsForm } from "./components/setting-form";
 
 interface SettingsPageProps {
   params: {
-    storeid: string;
+    storeId: string;
   };
 }
 
@@ -16,7 +16,7 @@ const Settings: React.FC<SettingsPageProps> = async ({ params }) => {
   }
   const store = await prismadb.store.findFirst({
     where: {
-      id: params.storeid,
+      id: params.storeId,
       userId,
     },
   });
