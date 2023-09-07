@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Trash } from "lucide-react";
-import { Billboard } from "@prisma/client";
+// import { Billboard } from "@prisma/client";
 import { useParams, useRouter } from "next/navigation";
 // import { useParams, useRouter } from "next/navigation";
 
@@ -25,6 +25,7 @@ import { Separator } from "@/components/ui/separator";
 import { Heading } from "@/components/ui/heading";
 import { AlertModal } from "@/components/modals/alert-modal";
 import ImageUpload from "@/components/ui/image-upload";
+import { Billboard } from "@/types";
 
 const formSchema = z.object({
   label: z.string().min(1),
