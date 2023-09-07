@@ -1,16 +1,21 @@
 "use client";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Model } from "@/components/ui/modal";
-import { useStoreModel } from "@/hooks/use-store-model";
+
 import { useEffect } from "react";
+import { useParams } from "next/navigation";
+
+import { useStoreModal } from "@/hooks/use-store-modal";
+
 const SetupPage = () => {
-  const onOpen = useStoreModel((state) => state.onOpen);
-  const isOpen = useStoreModel((state) => state.isOpen);
+  const onOpen = useStoreModal((state) => state.onOpen);
+  const isOpen = useStoreModal((state) => state.isOpen);
 
   useEffect(() => {
-    if (!isOpen) onOpen();
-  }, [onOpen, isOpen]);
-  return <div className="p-4"></div>;
+    if (!isOpen) {
+      onOpen();
+    }
+  }, [isOpen, onOpen]);
+
+  return null;
 };
+ 
 export default SetupPage;
