@@ -1,7 +1,7 @@
 import prismadb from "@/lib/prismadb";
 
 import { CategoryForm } from "./components/category-form";
-import { Category } from "@/types";
+import { Category } from "@prisma/client";
 
 const CategoryPage = async ({
   params,

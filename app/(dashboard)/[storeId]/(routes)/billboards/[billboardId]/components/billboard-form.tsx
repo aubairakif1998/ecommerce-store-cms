@@ -25,7 +25,7 @@ import { Separator } from "@/components/ui/separator";
 import { Heading } from "@/components/ui/heading";
 import { AlertModal } from "@/components/modals/alert-modal";
 import ImageUpload from "@/components/ui/image-upload";
-import { Billboard } from "@/types";
+import { Billboard } from "@prisma/client";
 
 const formSchema = z.object({
   label: z.string().min(1),
