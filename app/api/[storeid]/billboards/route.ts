@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 
 import prismadb from '@/lib/prismadb';
- 
+
 export async function POST(
   req: Request,
   { params }: { params: { storeId: string } }
@@ -48,7 +48,7 @@ export async function POST(
         storeId: params.storeId,
       }
     });
-  
+
     return NextResponse.json(billboard);
   } catch (error) {
     console.log('[BILLBOARDS_POST]', error);
@@ -58,19 +58,19 @@ export async function POST(
 
 export async function GET(
   req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: { storeid: string } }
 ) {
   try {
-    if (!params.storeId) {
+    if (!params.storeid) {
       return new NextResponse("Store id is required", { status: 400 });
     }
 
     const billboards = await prismadb.billboard.findMany({
       where: {
-        storeId: params.storeId
+        storeId: params.storeid
       }
     });
-  
+
     return NextResponse.json(billboards);
   } catch (error) {
     console.log('[BILLBOARDS_GET]', error);

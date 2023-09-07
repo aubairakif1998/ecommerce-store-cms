@@ -2,10 +2,10 @@ import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
 import { auth } from '@clerk/nextjs';
- 
+
 export async function POST(
   req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: { storeid: string } }
 ) {
   try {
     const { userId } = auth();
@@ -26,13 +26,13 @@ export async function POST(
       return new NextResponse("Value is required", { status: 400 });
     }
 
-    if (!params.storeId) {
+    if (!params.storeid) {
       return new NextResponse("Store id is required", { status: 400 });
     }
 
     const storeByUserId = await prismadb.store.findFirst({
       where: {
-        id: params.storeId,
+        id: params.storeid,
         userId
       }
     });
@@ -45,10 +45,10 @@ export async function POST(
       data: {
         name,
         value,
-        storeId: params.storeId
+        storeId: params.storeid
       }
     });
-  
+
     return NextResponse.json(color);
   } catch (error) {
     console.log('[COLORS_POST]', error);
@@ -70,7 +70,7 @@ export async function GET(
         storeId: params.storeId
       }
     });
-  
+
     return NextResponse.json(colors);
   } catch (error) {
     console.log('[COLORS_GET]', error);

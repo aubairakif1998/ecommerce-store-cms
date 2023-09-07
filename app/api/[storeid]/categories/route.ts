@@ -2,10 +2,10 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 
 import prismadb from '@/lib/prismadb';
- 
+
 export async function POST(
   req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: { storeid: string } }
 ) {
   try {
     const { userId } = auth();
@@ -21,18 +21,18 @@ export async function POST(
     if (!name) {
       return new NextResponse("Name is required", { status: 400 });
     }
-    
+
     if (!billboardId) {
       return new NextResponse("Billboard ID is required", { status: 400 });
     }
 
-    if (!params.storeId) {
+    if (!params.storeid) {
       return new NextResponse("Store id is required", { status: 400 });
     }
 
     const storeByUserId = await prismadb.store.findFirst({
       where: {
-        id: params.storeId,
+        id: params.storeid,
         userId,
       }
     });
@@ -45,10 +45,10 @@ export async function POST(
       data: {
         name,
         billboardId,
-        storeId: params.storeId,
+        storeId: params.storeid,
       }
     });
-  
+
     return NextResponse.json(category);
   } catch (error) {
     console.log('[CATEGORIES_POST]', error);
@@ -70,7 +70,7 @@ export async function GET(
         storeId: params.storeId
       }
     });
-  
+
     return NextResponse.json(categories);
   } catch (error) {
     console.log('[CATEGORIES_GET]', error);
