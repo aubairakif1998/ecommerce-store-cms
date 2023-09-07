@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { StoreModel } from "./store-modal";
+import { StoreModal } from "./store-modal";
 import { MoveDiagonal } from "lucide-react";
 import { Modal } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
