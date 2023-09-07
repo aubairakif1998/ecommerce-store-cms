@@ -17,7 +17,7 @@ export async function GET(
         id: params.billboardId
       }
     });
-  
+
     return NextResponse.json(billboard);
   } catch (error) {
     console.log('[BILLBOARD_GET]', error);
@@ -27,7 +27,7 @@ export async function GET(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { billboardId: string, storeId: string } }
+  { params }: { params: { billboardId: string, storeid: string } }
 ) {
   try {
     const { userId } = auth();
@@ -42,7 +42,7 @@ export async function DELETE(
 
     const storeByUserId = await prismadb.store.findFirst({
       where: {
-        id: params.storeId,
+        id: params.storeid,
         userId,
       }
     });
@@ -56,7 +56,7 @@ export async function DELETE(
         id: params.billboardId,
       }
     });
-  
+
     return NextResponse.json(billboard);
   } catch (error) {
     console.log('[BILLBOARD_DELETE]', error);
@@ -67,15 +67,15 @@ export async function DELETE(
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { billboardId: string, storeId: string } }
+  { params }: { params: { billboardId: string, storeid: string } }
 ) {
-  try {   
+  try {
     const { userId } = auth();
 
     const body = await req.json();
-    
+
     const { label, imageUrl } = body;
-    
+
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 403 });
     }
@@ -94,7 +94,7 @@ export async function PATCH(
 
     const storeByUserId = await prismadb.store.findFirst({
       where: {
-        id: params.storeId,
+        id: params.storeid,
         userId,
       }
     });
@@ -112,7 +112,7 @@ export async function PATCH(
         imageUrl
       }
     });
-  
+
     return NextResponse.json(billboard);
   } catch (error) {
     console.log('[BILLBOARD_PATCH]', error);

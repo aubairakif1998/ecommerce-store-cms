@@ -17,7 +17,7 @@ export async function GET(
         id: params.colorId
       }
     });
-  
+
     return NextResponse.json(color);
   } catch (error) {
     console.log('[COLOR_GET]', error);
@@ -27,7 +27,7 @@ export async function GET(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { colorId: string, storeId: string } }
+  { params }: { params: { colorId: string, storeid: string } }
 ) {
   try {
     const { userId } = auth();
@@ -42,7 +42,7 @@ export async function DELETE(
 
     const storeByUserId = await prismadb.store.findFirst({
       where: {
-        id: params.storeId,
+        id: params.storeid,
         userId
       }
     });
@@ -56,7 +56,7 @@ export async function DELETE(
         id: params.colorId
       }
     });
-  
+
     return NextResponse.json(color);
   } catch (error) {
     console.log('[COLOR_DELETE]', error);
@@ -67,7 +67,7 @@ export async function DELETE(
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { colorId: string, storeId: string } }
+  { params }: { params: { colorId: string, storeid: string } }
 ) {
   try {
     const { userId } = auth();
@@ -95,7 +95,7 @@ export async function PATCH(
 
     const storeByUserId = await prismadb.store.findFirst({
       where: {
-        id: params.storeId,
+        id: params.storeid,
         userId
       }
     });
@@ -113,7 +113,7 @@ export async function PATCH(
         value
       }
     });
-  
+
     return NextResponse.json(color);
   } catch (error) {
     console.log('[COLOR_PATCH]', error);
